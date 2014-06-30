@@ -89,6 +89,7 @@
                  {
                      $('#response').empty();
                      $('#response').append(data); // show response from the php script.
+                     window.location.reload(); 
                  }
                });
         } else {
