@@ -11,11 +11,20 @@ class Reviews
 { 
     /**
      * 
-     * @global createConnection $connection
-     * @param type $firstName
-     * @param type $lastName
-     * @param type $age
-     * @return type
+     * Get Post ID $post_id
+     * Get Reviewers Name $name
+     * Get Reviewers Email $email
+     * Get Website $website
+     * Get Post Rating $rating
+     * Get Review $review
+     * 1. Connect To Database Via $connection
+     * 2. Insert Gathered Values into Database Table (review)
+     * 3. Check if SQL Query Threw any Errors
+     * 4. If Error Exists Kill Query and Display Error
+     * 5. If no SQL Query Errors, Check If Inserting Data Caused any Errors
+     * 6. If Error exists return Error $response 
+     * 7. Else If no Errors return Success $response
+     * 
      */
     public function addNewReview($post_id,$name,$email,$website,$rating,$review)
     {
@@ -46,6 +55,15 @@ class Reviews
         }
 
     }
+    
+    /**
+     * 
+     * Get Post ID $post_id
+     * 1. Connect To Database Via $connection
+     * 2. Run Select Query on Database Table (review) based on $post_id
+     * 3. return $result
+     * 
+     */
 
     public function getReviews($post_id)
     {
@@ -55,9 +73,8 @@ class Reviews
 
             $selectQuery = "SELECT * FROM review WHERE post_id='$post_id'";
             $result = mysql_query($selectQuery);
-
+            
             return $result;
-
     }
 
 }
